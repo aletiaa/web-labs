@@ -1,0 +1,29 @@
+@model Product
+
+<h1>Add product</h1>
+
+@using (Html.BeginForm("AddProduct", "Product", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>Enter ID: </td>
+            <td>@Html.TextBoxFor(addingProduct => addingProduct.ID)</td>
+        </tr>
+        <tr>
+            <td>Enter Name: </td>
+            <td>@Html.TextBoxFor(addingProduct => addingProduct.Name)</td>
+        </tr>
+         <tr>
+            <td>Enter Price: </td>
+            <td>@Html.TextBoxFor(addingProduct => addingProduct.Price)</td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Add product"></td>
+        </tr>
+    </table>
+}
+<!-- <h4 style="color:darkred">
+    ID: @ViewBag.Id<br />
+    Name: @ViewBag.Name<br />
+    Price: @ViewBag.Price <br />
+</h4> -->
