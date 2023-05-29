@@ -6,18 +6,24 @@ namespace MvcMovie.Controllers;
 
 public class ProductController : Controller 
 {
+    private ProductsStorage _storage;
+    public ProductController(ProductsStorage storage) 
+    {
+        _storage = storage;
+    }
+
     [Route("/[controller]/Details/{id}")]
     [HttpGet]
     public IActionResult Index(int id)
     {
-        return View(ProductsStorage.Instance.FindProduct(id));
+        return View(_storage.FindProduct(id));
     }
 
     [Route("/[controller]/Add")]
     [HttpPost]
     public IActionResult AddProduct(Product product)
     {
-        ProductsStorage.Instance.Add(product);
+        _storage.Add(product);
         return RedirectToAction("Index", "Products");
     } 
 
@@ -25,7 +31,7 @@ public class ProductController : Controller
     [HttpGet]
     public IActionResult RemoveProduct(int id)
     {
-        ProductsStorage.Instance.Remove(id);
+        _storage.Remove(id);
         return RedirectToAction("Index", "Products");
     }
 

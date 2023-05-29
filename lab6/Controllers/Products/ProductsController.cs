@@ -6,10 +6,15 @@ namespace MvcMovie.Controllers;
 
 public class ProductsController : Controller 
 {
+    private ProductsStorage _storage;
+    public ProductsController(ProductsStorage storage)
+    {
+        _storage = storage;
+    }
     [HttpGet]
     public IActionResult Index()
     {
-        var products = ProductsStorage.Instance.Products; 
+        var products = _storage.Products; 
         return View(products);
     }
 

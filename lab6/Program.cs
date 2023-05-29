@@ -7,6 +7,8 @@ builder.Services.AddControllersWithViews();
 
 ConfigureServices(builder.Services); 
 
+builder.Services.AddScoped<ProductsStorage>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
