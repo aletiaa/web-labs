@@ -1,7 +1,11 @@
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+ConfigureServices(builder.Services); 
 
 var app = builder.Build();
 
@@ -25,3 +29,10 @@ app.MapControllerRoute(
     pattern: "{controller=Products}/{action=Index}/{id?}");
 
 app.Run();
+
+void ConfigureServices(IServiceCollection services)
+        {
+            services.AddDbContext<ShopContext>(options =>
+                options.UseSqlServer(@$"Server=.\SQLEXPRESS;Database=ShopDB;Trusted_Connection=True;Encrypt=False"));
+
+        }
