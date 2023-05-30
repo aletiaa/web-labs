@@ -6,6 +6,7 @@
 <table>
   <tr>
     <th></th>
+    <th>Id</th>
     <th>Name</th>
     <th>Price</th>
     <th>Quantity</th>
@@ -16,7 +17,8 @@
   <tr>
     <td>@Html.ActionLink("SHOW DETAILS", "Index", "Product", new {id = @cartItem.ProductId}, new { @class = "btn btn-light" })</td>
     <td>@cartItem.ProductId</td>
-    <td>123.99</td>
+    <td>@cartItem.ProductName</td>
+    <td>@cartItem.Price</td>
     <td>@cartItem.Quantity</td>
     <td>Action</td>
     <!-- <td>@Html.ActionLink("- Замовити", "AddToOrder", "Products", new {id = @cartItem.ProductId}, new { @class = "btn btn-primary" })</td> -->

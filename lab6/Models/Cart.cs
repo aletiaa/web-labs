@@ -26,7 +26,7 @@ public class Cart
         return _items;
     }
 
-    public void AddProduct(int productId)
+    public void AddProduct(int productId, string productName, double price)
     {
         var cartItem = _items.FirstOrDefault(item => item.ProductId == productId);
         
@@ -36,7 +36,7 @@ public class Cart
         }
         else
         {
-            _items.Add(new CartItem(productId, 1));
+            _items.Add(new CartItem(productId, productName, price, 1));
         }
     }
 }

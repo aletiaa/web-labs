@@ -25,9 +25,9 @@ public class ProductsController : Controller
         return View();
     }
 
-    public IActionResult AddToCart(int id)
+    public IActionResult AddToCart(int id, string productName, double price)
     {
-        Cart.Instance.AddProduct(id);
+        Cart.Instance.AddProduct(id, productName, price);
         return RedirectToAction("Index", "Cart");
     }
 }

@@ -16,7 +16,9 @@
     <td>@product.ID</td>
     <td>@product.Name</td>
     <td>@product.Price</td>
-    <td>@Html.ActionLink("- Замовити", "AddToCart", "Products", new {id = @product.ID}, new { @class = "btn btn-primary" })</td>
+    <td>@Html.ActionLink("Замовити", "AddToCart", "Products",
+                         new {id = @product.ID, productName = @product.Name, price = @product.Price},
+                         new { @class = "btn btn-primary" })</td>
   </tr>
 }
 </table>
