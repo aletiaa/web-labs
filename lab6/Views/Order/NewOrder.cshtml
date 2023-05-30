@@ -1,0 +1,24 @@
+@model Order
+
+<h1>Замовлення:</h1>
+
+@using (Html.BeginForm("CreateOrder", "Order", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>Прізвище та Ім'я: </td>
+            <td>@Html.TextBoxFor(orderDetails => orderDetails.FullName)</td>
+        </tr>
+        <tr>
+            <td>Номер телефону: </td>
+            <td>@Html.TextBoxFor(orderDetails => orderDetails.PhoneNumber)</td>
+        </tr>
+        <tr>
+            <td>Коментар: </td>
+            <td>@Html.TextBoxFor(orderDetails => orderDetails.Comment)</td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Підтвердити"></td>
+        </tr>
+    </table>
+}
