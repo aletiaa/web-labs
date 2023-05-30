@@ -6,8 +6,8 @@ namespace MvcMovie.Controllers;
 
 public class ProductController : Controller 
 {
-    private ProductsStorage _storage;
-    public ProductController(ProductsStorage storage) 
+    private ProductsRepository _storage;
+    public ProductController(ProductsRepository storage) 
     {
         _storage = storage;
     }
