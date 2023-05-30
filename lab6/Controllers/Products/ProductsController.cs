@@ -24,4 +24,10 @@ public class ProductsController : Controller
     {
         return View();
     }
+
+    public IActionResult AddToCart(int id)
+    {
+        Cart.Instance.AddProduct(id);
+        return RedirectToAction("Index", "Cart");
+    }
 }

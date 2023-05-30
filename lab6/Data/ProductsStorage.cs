@@ -24,7 +24,7 @@ public class ProductsStorage
     { 
         get
         {
-            return _db.Products.ToList();
+            return _db.Products.ToList(); // == select
         }
     }
 

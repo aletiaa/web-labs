@@ -1,0 +1,27 @@
+@model Cart
+
+<h1>Cart</h1>
+
+
+<table>
+  <tr>
+    <th></th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th></th>
+  </tr>
+@foreach (var cartItem in Model.GetAllItems())
+{
+  <tr>
+    <td>@Html.ActionLink("SHOW DETAILS", "Index", "Product", new {id = @cartItem.ProductId}, new { @class = "btn btn-light" })</td>
+    <td>@cartItem.ProductId</td>
+    <td>123.99</td>
+    <td>@cartItem.Quantity</td>
+    <td>Action</td>
+    <!-- <td>@Html.ActionLink("- Замовити", "AddToOrder", "Products", new {id = @cartItem.ProductId}, new { @class = "btn btn-primary" })</td> -->
+  </tr>
+}
+</table>
+
+ @Html.ActionLink("+ ADD", "AddProduct", "Products", null, new { @class = "btn btn-success" })
