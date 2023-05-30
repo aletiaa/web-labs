@@ -6,7 +6,11 @@ namespace MvcMovie.Controllers;
 
 public class OrderController : Controller 
 {
-    public OrderController() {}
+    private OrdersRepository _repository;
+    public OrderController(OrdersRepository repository) 
+    {
+        _repository = repository;
+    }
 
     public IActionResult Index()
     {
@@ -21,6 +25,8 @@ public class OrderController : Controller
     [HttpPost]
     public IActionResult CreateOrder(Order order)
     {
-        return Ok($"order created for {order.FullName} {order.PhoneNumber} {order.Comment}");
+        _repository.CreateOrder(order);
+
+        return Ok($"order {order.Id} created for {order.FullName} {order.PhoneNumber} {order.Comment}");
     }
 }

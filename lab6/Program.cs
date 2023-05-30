@@ -8,6 +8,7 @@ builder.Services.AddControllersWithViews();
 ConfigureServices(builder.Services); 
 
 builder.Services.AddScoped<ProductsRepository>();
+builder.Services.AddScoped<OrdersRepository>();
 
 var app = builder.Build();
 

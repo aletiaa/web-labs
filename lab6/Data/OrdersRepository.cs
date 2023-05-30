@@ -1,27 +1,30 @@
 public class OrdersRepository 
 {
     private ShopContext _db;
-    public OrdersRepository(ShopContext db)
+    private ProductsRepository _productsRepository;
+    public OrdersRepository(ShopContext db,  ProductsRepository productsRepository)
     {
         _db = db;
+        _productsRepository = productsRepository;
     }
 
-    public void AddProduct(int productId)
+    public void CreateOrder(Order order)
     {
-        Order currentOrder = new Order();
+        var allItems = Cart.Instance.GetAllItems();
+        order.CreationDate = DateTime.Now;
         
+        foreach (var item in allItems)
+        {
+            var productId = item.ProductId;
+            Product product = _productsRepository.FindProduct(productId);
+
+            for (int i = 0; i < item.Quantity; i++)
+            {
+                order.Products.Add(product);
+            }
+        }
+        
+        _db.Orders.Add(order);
+        _db.SaveChanges();
     }
-
-    // public void Remove(int id)
-    // {
-    //     Product removeProduct = FindProduct(id);
-    //     _db.Products.Remove(removeProduct);
-    //     _db.SaveChanges();
-    // }
-
-    // public Product FindProduct(int id)
-    // {
-    //     Product foundProduct = _db.Products.FirstOrDefault(product => product.ID == id);
-    //     return foundProduct;
-    // }
 }
