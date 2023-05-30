@@ -27,6 +27,6 @@ public class OrderController : Controller
     {
         _repository.CreateOrder(order);
 
-        return Ok($"order {order.Id} created for {order.FullName} {order.PhoneNumber} {order.Comment}");
+        return View("Order", order);
     }
 }
