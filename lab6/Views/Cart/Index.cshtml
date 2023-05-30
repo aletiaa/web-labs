@@ -15,15 +15,14 @@
 @foreach (var cartItem in Model.GetAllItems())
 {
   <tr>
-    <td>@Html.ActionLink("SHOW DETAILS", "Index", "Product", new {id = @cartItem.ProductId}, new { @class = "btn btn-light" })</td>
+    <td>@Html.ActionLink("Показати деталі", "Index", "Product", new {id = @cartItem.ProductId}, new { @class = "btn btn-light" })</td>
     <td>@cartItem.ProductId</td>
     <td>@cartItem.ProductName</td>
     <td>@cartItem.Price</td>
     <td>@cartItem.Quantity</td>
-    <td>Action</td>
-    <!-- <td>@Html.ActionLink("- Замовити", "AddToOrder", "Products", new {id = @cartItem.ProductId}, new { @class = "btn btn-primary" })</td> -->
+    <td>@Html.ActionLink("Видалити", "RemoveFromCart", "Cart", new {id = @cartItem.ProductId}, new { @class = "btn btn-danger" })</td>
   </tr>
 }
 </table>
 
- @Html.ActionLink("+ ADD", "AddProduct", "Products", null, new { @class = "btn btn-success" })
+ @Html.ActionLink("Додати", "Index", "Products", null, new { @class = "btn btn-success" })

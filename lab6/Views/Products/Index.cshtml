@@ -12,15 +12,15 @@
 @foreach (var product in Model)
 {
   <tr>
-    <td>@Html.ActionLink("SHOW DETAILS", "Index", "Product", new {id = @product.ID}, new { @class = "btn btn-light" })</td>
+    <td>@Html.ActionLink("Показати деталі", "Index", "Product", new {id = @product.ID}, new { @class = "btn btn-light" })</td>
     <td>@product.ID</td>
     <td>@product.Name</td>
     <td>@product.Price</td>
-    <td>@Html.ActionLink("Замовити", "AddToCart", "Products",
+    <td>@Html.ActionLink("Замовити", "AddToCart", "Cart",
                          new {id = @product.ID, productName = @product.Name, price = @product.Price},
                          new { @class = "btn btn-primary" })</td>
   </tr>
 }
 </table>
 
- @Html.ActionLink("+ ADD", "AddProduct", "Products", null, new { @class = "btn btn-success" })
+ @Html.ActionLink("+ Додати", "AddProduct", "Products", null, new { @class = "btn btn-success" })

@@ -39,4 +39,10 @@ public class Cart
             _items.Add(new CartItem(productId, productName, price, 1));
         }
     }
+
+    public void RemoveProduct(int id)
+    {
+        var cartItem = _items.FirstOrDefault(item => item.ProductId == id);
+        _items.Remove(cartItem);
+    }
 }
