@@ -38,6 +38,6 @@ app.Run();
 void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ShopContext>(options =>
-                options.UseSqlServer(@$"Server=.\SQLEXPRESS;Database=ShopDB;Trusted_Connection=True;Encrypt=False"));
+                options.UseSqlServer(@$"Server=.\SQLEXPRESS;Database=ShopDBCourseWork;Trusted_Connection=True;Encrypt=False"));
 
         }

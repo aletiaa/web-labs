@@ -6,12 +6,17 @@ public class ProductsRepository
         _db = db;
     }
 
-    public List<Product> Products
+    public List<Product> GetAllProducts()
     { 
-        get
-        {
-            return _db.Products.ToList(); // == select
-        }
+        return _db.Products.ToList();
+    }
+
+    public List<Product> GetRandomThreeProducts()
+    { 
+        return _db.Products
+                    .OrderBy(p => Guid.NewGuid())
+                    .Take(3)
+                    .ToList();
     }
 
     public void Add(Product product)
