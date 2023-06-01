@@ -14,7 +14,8 @@ public class OrderController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        List<Order> allOrders = _repository.GetAllOrders();
+        return View(allOrders);
     }
 
     public IActionResult NewOrder()

@@ -1,1 +1,56 @@
-<h1>Order confirmation</h1>
+@model List<Order>
+
+<h1>Перегляд замовлень:</h1>
+
+@if (Model.Count == 0)
+{
+    <p>Немає замовлень</p>
+}
+else
+{
+    
+        @foreach (var order in Model)
+        {
+            <table style="margin-top:50px;">
+                <tr>
+                    <th>Номер замовлення</th>
+                    <th>Дата замовлення</th>
+                    <th>Замовник</th>
+                    <th>Прізвище,  ім'я</th>
+                    <th>Загальна сума</th>
+                </tr>
+
+                <tr>
+                    <td>@order.Id</td>
+                    <td>@order.CreationDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                    <td>@order.PhoneNumber</td>
+                    <td>@order.FullName</td>
+                    <td>@order.OrdersProducts.Select(p => p.Product.Price * p.ProductQuantity).Sum().ToString("0.##")</td>
+                </tr>
+
+                <tr>
+                    <td colspan="5">
+                        <h6><b>Коментар:</b></h6>
+                        <h6>@order.Comment</h6>
+
+                        <h6><b>Склад замовлення:</b></h6>
+                        <table>
+                            <tr>
+                                <td>Назва</td>
+                                <td>Ціна ща одиницю</td>
+                                <td>Кількість</td>
+                            </tr>
+                            @foreach(var product in order.OrdersProducts.Select(o => o.Product))
+                            {
+                                <tr>
+                                    <td>@product.Name</td>
+                                    <td>@product.Price</td>
+                                    <td>@order.OrdersProducts.First(o => o.Product.ID == product.ID).ProductQuantity</td>
+                                </tr>
+                            }
+                        </table>
+                    </td>
+                </tr>
+        </table>
+    }
+}

@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 public class OrdersRepository 
 {
     private ShopContext _db;
@@ -18,13 +20,26 @@ public class OrdersRepository
             var productId = item.ProductId;
             Product product = _productsRepository.FindProduct(productId);
 
-            for (int i = 0; i < item.Quantity; i++)
-            {
-                order.Products.Add(product);
-            }
+            OrderProduct orderProduct = new OrderProduct();
+            orderProduct.Order = order;
+            orderProduct.Product = product;
+            orderProduct.ProductQuantity = item.Quantity;
+            order.OrdersProducts.Add(orderProduct);
         }
         
         _db.Orders.Add(order);
+
         _db.SaveChanges();
+
+        Cart.Instance.Clear();
+    }
+
+    public List<Order> GetAllOrders()
+    {
+        var orders = _db.Orders.Include(o => o.OrdersProducts)
+                               .ThenInclude(o => o.Product)
+                               .ToList();
+
+        return orders;
     }
 }

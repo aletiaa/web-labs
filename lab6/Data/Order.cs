@@ -2,7 +2,7 @@ public class Order
 {
      public Order()
     {
-        this.Products = new List<Product>();
+        this.OrdersProducts = new List<OrderProduct>();
     }
 
     public int Id { get; set;}
@@ -11,6 +11,6 @@ public class Order
     public DateTime CreationDate { get; set; }
     public string FullName { get; set; }
 
-    public virtual List<Product> Products { get; set;}
+    public List<OrderProduct> OrdersProducts { get; set;}
 }
 

@@ -1,29 +1,39 @@
 @model Cart
 
-<h1>Cart</h1>
+<h1>Кошик:</h1>
 
-
-<table>
-  <tr>
-    <th></th>
-    <th>Id</th>
-    <th>Name</th>
-    <th>Price</th>
-    <th>Quantity</th>
-    <th></th>
-  </tr>
-@foreach (var cartItem in Model.GetAllItems())
-{
-  <tr>
-    <td>@Html.ActionLink("Показати деталі", "Index", "Product", new {id = @cartItem.ProductId}, new { @class = "btn btn-light" })</td>
-    <td>@cartItem.ProductId</td>
-    <td>@cartItem.ProductName</td>
-    <td>@cartItem.Price</td>
-    <td>@cartItem.Quantity</td>
-    <td>@Html.ActionLink("Видалити", "RemoveFromCart", "Cart", new {id = @cartItem.ProductId}, new { @class = "btn btn-danger" })</td>
-  </tr>
+@{
+  var items = Model.GetAllItems();
+  
+  if (items.Count > 0)
+  {
+      <table>
+        <tr>
+          <th></th>
+          <th>Код</th>
+          <th>Назва</th>
+          <th>Ціна</th>
+          <th>Кількість</th>
+          <th></th>
+        </tr>
+        @foreach (var cartItem in Model.GetAllItems())
+        {
+          <tr>
+            <td>@Html.ActionLink("Показати деталі", "Index", "Product", new {id = @cartItem.ProductId}, new { @class = "btn btn-light" })</td>
+            <td>@cartItem.ProductId</td>
+            <td>@cartItem.ProductName</td>
+            <td>@cartItem.Price</td>
+            <td>@cartItem.Quantity</td>
+            <td>@Html.ActionLink("Видалити", "RemoveFromCart", "Cart", new {id = @cartItem.ProductId}, new { @class = "btn btn-danger" })</td>
+          </tr>
+        }
+    </table>
+    @Html.ActionLink("Додати", "Index", "Products", null, new { @class = "btn btn-success" })
+    @Html.ActionLink("Замовити", "NewOrder", "Order", null, new { @class = "btn btn-warning" })
+  }
+  else
+  {
+    <h2>Кошик порожній. Час щось додати.</h2>
+    @Html.ActionLink("Додати", "Index", "Products", null, new { @class = "btn btn-success" })
+  }
 }
-</table>
-
- @Html.ActionLink("Додати", "Index", "Products", null, new { @class = "btn btn-success" })
- @Html.ActionLink("Замовити", "NewOrder", "Order", null, new { @class = "btn btn-warning" })

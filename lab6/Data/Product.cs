@@ -2,12 +2,12 @@ public class Product
 {
     public Product() 
     {
-        this.Orders = new List<Order>();
+        this.OrdersProducts = new List<OrderProduct>();
     }
  
     public int ID { get; set; }
     public string Name { get; set; }
     public double Price { get; set; }
 
-    public virtual List<Order> Orders { get; set; }
+    public List<OrderProduct> OrdersProducts { get; set; }
 }

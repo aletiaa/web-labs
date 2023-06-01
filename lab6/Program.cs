@@ -12,6 +12,8 @@ builder.Services.AddScoped<OrdersRepository>();
 
 var app = builder.Build();
 
+ShopDbInitializer.Seed(app);
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
