@@ -45,4 +45,9 @@ public class Cart
         var cartItem = _items.FirstOrDefault(item => item.ProductId == id);
         _items.Remove(cartItem);
     }
+
+    public void Clear()
+    {
+        _items.Clear();
+    }
 }

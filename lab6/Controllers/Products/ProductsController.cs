@@ -14,7 +14,7 @@ public class ProductsController : Controller
     [HttpGet]
     public IActionResult Index()
     {
-        var products = _storage.Products; 
+        var products = _storage.GetAllProducts();
         return View(products);
     }
 

@@ -1,6 +1,6 @@
 @model Product
 
-<h1>Add product</h1>
+<h1>Створити продукт:</h1>
 
 @using (Html.BeginForm("AddProduct", "Product", FormMethod.Post))
 {
@@ -18,12 +18,7 @@
             <td>@Html.TextBoxFor(addingProduct => addingProduct.Price)</td>
         </tr>
         <tr>
-            <td colspan="2"><input type="submit" value="Add product"></td>
+            <td colspan="2"><input type="submit" value="Створити"></td>
         </tr>
     </table>
 }
-<!-- <h4 style="color:darkred">
-    ID: @ViewBag.Id<br />
-    Name: @ViewBag.Name<br />
-    Price: @ViewBag.Price <br />
-</h4> -->
